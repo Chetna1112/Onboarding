@@ -3,20 +3,13 @@ package com.chetna.growigh
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import android.icu.lang.UCharacter.GraphemeClusterBreak.L
-import android.media.Image
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.provider.ContactsContract.CommonDataKinds.Im
 import android.widget.ImageView
 import android.widget.LinearLayout
-import androidx.viewpager.widget.ViewPager
 import androidx.viewpager2.widget.ViewPager2
 import com.chetna.growigh.model.OnBoardingData
-import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
-import android.widget.LinearLayout.LayoutParams
 import android.widget.TextView
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 
 class MainActivity : AppCompatActivity() {
@@ -48,22 +41,28 @@ class MainActivity : AppCompatActivity() {
 
 
     private fun setOnboardingItems() {
+        findViewById<ImageView>(R.id.progress).setImageResource(R.drawable.progress)
         onBoardingDataAdapter = OnboardingAdapter(
             listOf(
                 OnBoardingData(
                     imageUrl = R.drawable.amico,
                     title = "About Us",
                     desc = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore"
+                   // img = R.drawable.progress
+
+
                 ),
                 OnBoardingData(
                     imageUrl = R.drawable.pana,
                     title = "Our Mission",
                     desc = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore"
+                   // img = R.drawable.progress
                 ),
                 OnBoardingData(
                     imageUrl = R.drawable.bro,
                     title = "Our Vision",
                     desc = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore"
+                   // R.drawable.img
                 )
             )
         )
@@ -73,6 +72,18 @@ class MainActivity : AppCompatActivity() {
         ViewPager2.OnPageChangeCallback(){
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
+                if (position == 1) {
+                    // It's the 1st onboarding screen
+                    findViewById<ImageView>(R.id.progress).setImageResource(R.drawable.progress)
+                }
+                if (position == 2) {
+                    // It's the 2nd onboarding screen
+                    findViewById<ImageView>(R.id.progress).setImageResource(R.drawable.progress)
+                }
+                if (position == onBoardingDataAdapter.itemCount - 1) {
+                    // It's the last onboarding screen
+                  findViewById<ImageView>(R.id.progress).setImageResource(R.drawable.read)
+                }
             }
         })
         (viewPager.getChildAt(0) as RecyclerView).overScrollMode=

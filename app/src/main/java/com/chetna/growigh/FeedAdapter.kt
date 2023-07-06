@@ -27,9 +27,9 @@ class FeedAdapter(val context: Context, val article: List<Article>) :
     }
 
     override fun getItemCount(): Int {
-       // if(article.size>10)
-       //     return 10
-       // else
+       if(article.size>10)
+          return 10
+        else
         return article.size
     }
     class ArticleViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

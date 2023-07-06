@@ -11,10 +11,10 @@ import retrofit2.http.Query
 //https://newsapi.org/v2/top-headlines?country=in&apiKey=56e0afcc78724d7089f518edf73115ce
 //https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=56e0afcc78724d7089f518edf73115ce
 const val BASE_URL="https://newsapi.org/"
-const val API_KEY="56e0afcc78724d7089f518edf73115ce"
+const val API_KEY="cadf19e2e3c14880bebd5c6eb49330bd"
 interface FeedInterface {
-    @GET("v2/top-headlines?apiKey=$API_KEY")
-    fun gateHeadlines(@Query("country")country:String,@Query("page")page:Int):Call<News>
+    @GET("/v2/everything?apiKey=$API_KEY")
+    fun gateHeadlines(@Query("q")q:String,@Query("page")page:Int):Call<News>
     //https://newsapi.org/v2/top-headlines?apiKey=56e0afcc78724d7089f518edf73115ce&country=in&page=1
 }
 //singleton/ retrofit object

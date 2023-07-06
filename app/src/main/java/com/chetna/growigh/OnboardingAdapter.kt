@@ -1,5 +1,6 @@
 package com.chetna.growigh
 
+import android.provider.ContactsContract.CommonDataKinds.Im
 import android.util.Log.i
 import android.view.LayoutInflater
 import android.view.View
@@ -28,10 +29,12 @@ class OnboardingAdapter(private val onBoardingData:List<OnBoardingData>):
         private val image=view.findViewById<ImageView>(R.id.titleImage)
         private val title=view.findViewById<TextView>(R.id.title)
         private val description=view.findViewById<TextView>(R.id.description)
+            // private val progress=view.findViewById<ImageView>(R.id.progress )
         fun bind(onBoardingData: OnBoardingData){
             image.setImageResource(onBoardingData.imageUrl)
             title.text=onBoardingData.title
             description.text=onBoardingData.desc
+            //progress.setImageResource(onBoardingData.img)
         }
     }
 
